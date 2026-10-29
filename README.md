@@ -6,6 +6,14 @@ aimed at the lineage of **Terragen**, **Bryce**, and **VistaPro** (see
 "History" below). three.js, no build step, deploys to any static host
 (Cloudflare Pages, GitHub Pages, `python3 -m http.server`).
 
+## Demo
+
+Same seed, three algorithms:
+
+| fractal (fBm) | ridged | diamond-square |
+|---|---|---|
+| ![fBm island](docs/img/demo_fbm.png) | ![ridged archipelago](docs/img/demo_ridged.png) | ![diamond-square basin](docs/img/demo_ds.png) |
+
 ## Run it
 
 ```
@@ -13,6 +21,16 @@ python3 -m http.server 8732
 ```
 
 Then open **http://localhost:8732/** . Any static server works.
+
+Shareable links carry the scene state in the URL, e.g.
+`?algo=ridged&seed=42&land=0` — `ui=0` hides the overlays for embeds.
+
+## Deploy
+
+No build step needed. On Cloudflare Pages: Workers & Pages → Create →
+Pages → Connect to Git → pick this repo → **no build command, output
+directory `/`** → deploy. Works with a private repo; the site is still
+public. Direct upload also works: `npx wrangler pages deploy .`
 
 ## Generators (algorithm dropdown)
 
@@ -33,7 +51,9 @@ Then open **http://localhost:8732/** . Any static server works.
 - **height** — vertical exaggeration.
 - **detail** — fBm octave count (ignored by diamond-square).
 - **sea** — water plane level.
-- **grid** — wireframe toggle (the pure "landscape grid" view).
+- **land** — island mask strength: 100 gives an island, 0 gives open
+  mountain terrain (no effect on diamond-square).
+- **grid** — wireframe overlay, on by default.
 - **colors** — height-band vertex colors: sand → grass → rock → snow.
 - **drag** orbits, **scroll/pinch** zooms.
 

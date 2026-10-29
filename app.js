@@ -227,6 +227,37 @@ on('reseed', 'click', () => {
 on('wire', 'change', e => { params.wire = e.target.checked; rebuild(); });
 on('colors', 'change', e => { params.colors = e.target.checked; rebuild(); });
 
+// ---------- URL params: shareable links, e.g. ?algo=ridged&land=0&seed=42 ----------
+
+(function applyUrlParams() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('ui') === '0') {
+    $('panel').style.display = 'none';
+    $('title').style.display = 'none';
+  }
+  const set = (id, key, scale = 1) => {
+    const v = q.get(id);
+    if (v === null) return;
+    params[key] = +v * scale;
+    const el = $(id);
+    if (el.type === 'range') { el.value = v; $(id + '-val').textContent = v; }
+    else if (el.type === 'checkbox') el.checked = params[key] > 0;
+    else el.value = v;
+  };
+  if (q.get('algo') && TITLES[q.get('algo')]) {
+    params.algo = q.get('algo');
+    $('algo').value = params.algo;
+    $('algo-title').textContent = TITLES[params.algo];
+  }
+  set('seed', 'seed');
+  set('height', 'height');
+  set('detail', 'octaves');
+  set('sea', 'sea');
+  set('land', 'land', 0.01);
+  set('wire', 'wire');
+  set('colors', 'colors');
+})();
+
 // ---------- orbit controls (drag / wheel / pinch — no addon needed) ----------
 
 const orbit = { theta: -0.7, phi: 0.95, r: 120 };
