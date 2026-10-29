@@ -8,9 +8,9 @@ aimed at the lineage of **Terragen**, **Bryce**, and **VistaPro** (see "History"
 
 Same seed, three algorithms:
 
-| fractal (fBm) | ridged | diamond-square |
+| diamond-square | fractal (fBm) | ridged |
 |---|---|---|
-| ![fBm island](docs/img/demo_fbm.png) | ![ridged archipelago](docs/img/demo_ridged.png) | ![diamond-square basin](docs/img/demo_ds.png) |
+| ![diamond-square basin](docs/img/demo_ds.png) | ![fBm island](docs/img/demo_fbm.png) | ![ridged archipelago](docs/img/demo_ridged.png) |
 
 ## Try it live
 
@@ -38,6 +38,9 @@ public. Direct upload also works:
 
 ## Generators (algorithm dropdown)
 
+- **diamond-square** — midpoint displacement on a 2⁸+1 = 257×257 grid:
+  recursively set each midpoint to the average of its neighbors plus a
+  shrinking random offset. This is the recursive-subdivision algorithm.
 - **fractal (fBm)** — value noise summed over octaves with halving
   amplitude and doubling frequency, plus a radial island falloff so the
   terrain rises out of the sea. This is the classic Terragen-style fractal
@@ -45,9 +48,6 @@ public. Direct upload also works:
 - **ridged** — the same octaves folded into `1-|n|²` sharp crests
   (Musgrave-style ridged multifractal). Makes mountain spines instead of
   rolling hills.
-- **diamond-square** — midpoint displacement on a 2⁸+1 = 257×257 grid:
-  recursively set each midpoint to the average of its neighbors plus a
-  shrinking random offset. This is the recursive-subdivision algorithm.
 
 ## Controls
 
