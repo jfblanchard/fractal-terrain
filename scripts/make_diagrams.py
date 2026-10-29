@@ -47,18 +47,27 @@ def octave_stack():
     octaves = [smooth_noise(f) * 0.55 ** i for i, f in enumerate([3, 6, 12, 24])]
     total = sum(octaves)
 
+    # one shared y-scale: each octave must visibly shrink vs the last,
+    # and the sum visibly towers over them all
+    pad = (total.max() - total.min()) * 0.08
+    lo, hi = total.min() - pad, total.max() + pad
+
     fig, axes = plt.subplots(5, 1, figsize=(7, 5.5), sharex=True)
     fig.subplots_adjust(hspace=0.55, left=0.13, right=0.97, top=0.93, bottom=0.08)
     labels = ["octave 1: the big shape", "octave 2: ridges",
               "octave 3: bumps", "octave 4: texture", "sum: a mountain profile"]
     for i, (ax, o) in enumerate(zip(axes[:4], octaves)):
+        ax.set_ylim(lo, hi)
+        ax.axhline(0, color=DIM, lw=0.4, alpha=0.4)
         ax.plot(x, o, color=DIM, lw=1.1)
         ax.set_ylabel(f"×{0.55**i:.2f}", rotation=0, labelpad=22,
                       va="center", color=DIM, fontsize=9)
         ax.set_title(labels[i], fontsize=10, color=INK, loc="left", pad=2)
         ax.set_yticks([]); ax.set_xticks([])
+    axes[4].set_ylim(lo, hi)
+    axes[4].axhline(0, color=DIM, lw=0.4, alpha=0.4)
     axes[4].plot(x, total, color=ACCENT, lw=1.8)
-    axes[4].fill_between(x, total, total.min() - 0.05, color=ACCENT, alpha=0.15)
+    axes[4].fill_between(x, total, lo, color=ACCENT, alpha=0.15)
     axes[4].set_title(labels[4], fontsize=10, color=ACCENT, loc="left", pad=2)
     axes[4].set_yticks([]); axes[4].set_xticks([])
     fig.savefig(fig_path("fbm_octaves.png"), dpi=160)
