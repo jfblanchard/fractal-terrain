@@ -1,7 +1,6 @@
 # fractal-terrain
 
-A self-contained procedural terrain generator in the browser — the spiritual
-successor to the hand-rolled "subdivide a grid and add noise" experiments,
+A procedural terrain generator in the browser, which is the successor to the hand-rolled "subdivide a grid and add noise" experiments,
 aimed at the lineage of **Terragen**, **Bryce**, and **VistaPro** (see
 "History" below). three.js, no build step, deploys to any static host
 (Cloudflare Pages, GitHub Pages, `python3 -m http.server`).
