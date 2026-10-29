@@ -91,3 +91,7 @@ public. Direct upload also works:
 - **World Machine** (2005–) — node-graph terrain; added the erosion
   simulation that made heightfields look geologically real.
 - **Mojoworld** (2001–) — Pandromeda's planet-scale procedural worlds.
+
+## License
+
+MIT, see [LICENSE](LICENSE). three.js (`vendor/three/`) is MIT under its own license.
