@@ -234,6 +234,7 @@ on('colors', 'change', e => { params.colors = e.target.checked; rebuild(); });
   if (q.get('ui') === '0') {
     $('panel').style.display = 'none';
     $('title').style.display = 'none';
+    $('src').style.display = 'none';
   }
   const set = (id, key, scale = 1) => {
     const v = q.get(id);
