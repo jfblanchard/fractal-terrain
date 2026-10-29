@@ -1,7 +1,2 @@
 smoke_test.png
 *.log
-docs/TUTORIAL.md
-docs/terrain-from-noise.pdf
-docs/img/fbm_octaves.png
-docs/img/diamond_square.png
-docs/img/height_bands.png
