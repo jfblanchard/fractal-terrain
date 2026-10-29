@@ -59,6 +59,8 @@ public. Direct upload also works:
   mountain terrain (no effect on diamond-square).
 - **grid** — wireframe overlay, on by default.
 - **colors** — height-band vertex colors: sand → grass → rock → snow.
+- **export heightmap** — downloads the current heightfield as a 257×257
+  grayscale PNG (white = peak, black = sea floor).
 - **drag** orbits, **scroll/pinch** zooms.
 
 ## Structure
