@@ -12,6 +12,10 @@ Same seed, three algorithms:
 |---|---|---|
 | ![fBm island](docs/img/demo_fbm.png) | ![ridged archipelago](docs/img/demo_ridged.png) | ![diamond-square basin](docs/img/demo_ds.png) |
 
+## Try it live
+
+**<https://fractal-terrain.pages.dev>**
+
 ## Run it
 
 ```
@@ -28,7 +32,9 @@ Shareable links carry the scene state in the URL, e.g.
 No build step needed. On Cloudflare Pages: Workers & Pages → Create →
 Pages → Connect to Git → pick this repo → **no build command, output
 directory `/`** → deploy. Works with a private repo; the site is still
-public. Direct upload also works: `npx wrangler pages deploy .`
+public. Direct upload also works:
+`npx wrangler@3 pages deploy . --project-name fractal-terrain`
+(wrangler 4 creates a Worker instead of a Pages project).
 
 ## Generators (algorithm dropdown)
 
