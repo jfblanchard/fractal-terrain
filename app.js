@@ -1,4 +1,4 @@
-// terrain-gen — procedural island heightfield, v1
+// fractal-terrain — procedural heightfield generator, v1
 // Two classic generators: fractal value noise (fBm / ridged, the Terragen lineage)
 // and diamond-square midpoint displacement (the recursive-subdivision approach).
 // Self-contained: vendored three.js module, no OrbitControls addon (custom orbit below).
