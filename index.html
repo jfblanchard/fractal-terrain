@@ -9,8 +9,13 @@
 <body>
 <canvas id="scene"></canvas>
 
+<div id="title">
+  <h1 id="algo-title">fractal noise</h1>
+  <p>fractal terrain generation</p>
+</div>
+
 <header id="panel">
-  <h1>fractal-terrain</h1>
+  <h1>parameters</h1>
   <div class="row">
     <label for="algo">noise</label>
     <select id="algo">
@@ -45,7 +50,7 @@
     <output id="land-val">100</output>
   </div>
   <div class="row toggles">
-    <label><input id="wire" type="checkbox"> grid</label>
+    <label><input id="wire" type="checkbox" checked> grid</label>
     <label><input id="colors" type="checkbox" checked> colors</label>
   </div>
   <p class="hint">drag to orbit &middot; scroll / pinch to zoom</p>

@@ -164,7 +164,10 @@ scene.add(sea);
 // ---------- rebuild ----------
 
 const params = { algo: 'fbm', seed: 1, height: 18, octaves: 5, sea: 30,
-                 land: 1.0, wire: false, colors: true };
+                 land: 1.0, wire: true, colors: true };
+
+const TITLES = { fbm: 'fractal noise', ridged: 'ridged multifractal',
+                 ds: 'diamond-square' };
 
 function rebuild() {
   const heights = buildHeights(params);
@@ -210,7 +213,11 @@ bindRange('detail', 'octaves');
 bindRange('sea', 'sea');
 bindRange('land', 'land', 0.01);   // slider 0-100 → 0-1
 
-on('algo', 'change', e => { params.algo = e.target.value; rebuild(); });
+on('algo', 'change', e => {
+  params.algo = e.target.value;
+  $('algo-title').textContent = TITLES[params.algo];
+  rebuild();
+});
 on('seed', 'change', e => { params.seed = +e.target.value | 0; rebuild(); });
 on('reseed', 'click', () => {
   params.seed = (Math.random() * 1e6) | 0;
