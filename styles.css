@@ -124,6 +124,8 @@ html, body {
 }
 .row button:active { background: rgba(111, 208, 167, 0.25); }
 
+#export { flex: 1; font-size: 12px; }
+
 .toggles { gap: 14px; }
 .toggles label {
   flex: 0 0 auto;

@@ -1,8 +1,7 @@
 # fractal-terrain
 
-A procedural terrain generator in the browser, which is the successor to the hand-rolled "subdivide a grid and add noise" experiments,
-aimed at the lineage of **Terragen**, **Bryce**, and **VistaPro** (see
-"History" below). three.js, no build step, deploys to any static host
+A procedural terrain generator in the browser, which is the successor to the hand-rolled "subdivide a grid and add noise" experiments, 
+aimed at the lineage of **Terragen**, **Bryce**, and **VistaPro** (see "History" below). three.js, no build step, deploys to any static host
 (Cloudflare Pages, GitHub Pages, `python3 -m http.server`).
 
 ## Demo
@@ -67,7 +66,7 @@ public. Direct upload also works: `npx wrangler pages deploy .`
 
 ## Roadmap
 
-- Export heightmap as PNG / .raw (importable into Terragen & friends)
+- Raw 16-bit heightmap export (importable into Terragen & friends)
 - Proper colormap editor (custom band stops)
 - Thermal + hydraulic erosion passes
 - glTF export of the mesh

@@ -258,6 +258,27 @@ on('colors', 'change', e => { params.colors = e.target.checked; rebuild(); });
   set('colors', 'colors');
 })();
 
+// ---------- export ----------
+
+on('export', 'click', () => {
+  const heights = buildHeights(params);
+  const n = SEGS + 1;
+  const c = document.createElement('canvas');
+  c.width = c.height = n;
+  const ctx = c.getContext('2d');
+  const img = ctx.createImageData(n, n);
+  for (let i = 0; i < heights.length; i++) {
+    const v = Math.round(Math.max(0, Math.min(1, heights[i])) * 255);
+    img.data[i * 4] = img.data[i * 4 + 1] = img.data[i * 4 + 2] = v;
+    img.data[i * 4 + 3] = 255;
+  }
+  ctx.putImageData(img, 0, 0);
+  const a = document.createElement('a');
+  a.href = c.toDataURL('image/png');
+  a.download = `heightmap_${params.algo}_seed${params.seed}.png`;
+  a.click();
+});
+
 // ---------- orbit controls (drag / wheel / pinch — no addon needed) ----------
 
 const orbit = { theta: -0.7, phi: 0.95, r: 120 };
