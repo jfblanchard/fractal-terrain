@@ -102,7 +102,8 @@ function buildHeights(p) {
       if (p.algo === 'fbm') f = f * 0.5 + 0.5;     // shift to [0,1]
       const dx = u - 0.5, dy = v - 0.5;
       const d = Math.sqrt(dx * dx + dy * dy) * 2;  // 0 center → ~1.4 corner
-      f *= Math.max(0, 1 - Math.pow(d, 3));        // smooth island mask
+      const mask = Math.max(0, 1 - Math.pow(d, 3));
+      f *= 1 - p.land + p.land * mask;             // blend: 0=endless terrain, 1=island
       h[y * n + x] = f;
     }
   }
@@ -163,7 +164,7 @@ scene.add(sea);
 // ---------- rebuild ----------
 
 const params = { algo: 'fbm', seed: 1, height: 18, octaves: 5, sea: 30,
-                 wire: false, colors: true };
+                 land: 1.0, wire: false, colors: true };
 
 function rebuild() {
   const heights = buildHeights(params);
@@ -207,6 +208,7 @@ function bindRange(id, key, scale = 1) {
 bindRange('height', 'height');
 bindRange('detail', 'octaves');
 bindRange('sea', 'sea');
+bindRange('land', 'land', 0.01);   // slider 0-100 → 0-1
 
 on('algo', 'change', e => { params.algo = e.target.value; rebuild(); });
 on('seed', 'change', e => { params.seed = +e.target.value | 0; rebuild(); });
