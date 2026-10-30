@@ -44,7 +44,7 @@ Diamond-square has a famous flaw. Because each new point averages *only* its nei
 
 $$ F(x, y) = \sum_{o=0}^{O-1} a^{\,o} \cdot N\big(f^o x,\; f^o y\big) $$
 
-Read it as: add up copies of a smooth noise function $N$, where each copy is $f$ times finer in space ($f \approx 2$, doubling the frequency each *octave*) and $a$ times smaller in height ($a \approx 0.5$). Each term is one of the wavy layers in the figure above. The octave count $O$ controls how much fine detail appears — five or six is enough for a convincing landscape.
+Read it as: add up copies of a smooth noise function $N$, where each copy is $f$ times finer in space ($f \approx 2$, doubling the frequency each *octave*) and $a$ times smaller in height ($a \approx 0.5$). Each term is one of the wavy layers in the figure above. The octave count $O$ controls how much fine detail appears: five or six is enough for a convincing landscape.
 
 The noise $N$ itself is the only subtle ingredient. Plain random values per grid point give static, not hills, because neighboring points disagree violently. The fix is **value noise** (or Perlin noise): put random values on a sparse lattice and blend between them with a smooth curve. Neighbors then agree by construction, and the result is smooth randomness.
 
@@ -70,11 +70,11 @@ Erosion is why the old programs still matter as more than nostalgia. A generativ
 
 ## The old programs
 
-- **VistaPro** (1989) — flew through fractal landscapes and real USGS survey data. The granddaddy; proved a home computer could render a world.
-- **Bryce** (1994) — fractal terrain editor with a famously odd UI. Put "landscape in a box" on every Mac user's desk.
-- **Terragen** (1999) — fBm terrain plus sky, atmosphere, and water. The reference point for landscape-as-art; still developed today.
-- **Mojoworld** (2001) — Musgrave's own planet-scale procedural worlds.
-- **World Machine** (2005) — node-graph terrain where erosion became a first-class ingredient. This is the program that made generated terrain look geologically argued rather than statistically plausible.
+- **VistaPro** (1989): flew through fractal landscapes and real USGS survey data. The granddaddy; proved a home computer could render a world.
+- **Bryce** (1994): fractal terrain editor with a famously odd UI. Put "landscape in a box" on every Mac user's desk.
+- **Terragen** (1999): fBm terrain plus sky, atmosphere, and water. The reference point for landscape-as-art; still developed today.
+- **Mojoworld** (2001): Musgrave's own planet-scale procedural worlds.
+- **World Machine** (2005): node-graph terrain where erosion became a first-class ingredient. This is the program that made generated terrain look geologically argued rather than statistically plausible.
 
 ## Color is cheap
 
@@ -92,7 +92,7 @@ But the classical math survives inside the new systems in two places. Training d
 
 ## Further reading
 
-- Fournier, Fussell, Carpenter, *Computer Rendering of Stochastic Models* (1982) — the paper that introduced recursive subdivision terrain.
-- Mandelbrot, *The Fractal Geometry of Nature* (1982) — the worldview.
-- Kenton Musgrave's work on fractal terrain in *Texturing & Modeling* (Ebert et al.) — ridged noise and the art direction of fractals.
-- Mus, "Hydraulic Erosion on Heightfields" — the standard writeup of droplet erosion, widely reimplemented.
+- Fournier, Fussell, Carpenter, *Computer Rendering of Stochastic Models* (1982): the paper that introduced recursive subdivision terrain.
+- Mandelbrot, *The Fractal Geometry of Nature* (1982): the worldview.
+- Kenton Musgrave's work on fractal terrain in *Texturing & Modeling* (Ebert et al.): ridged noise and the art direction of fractals.
+- Mus, "Hydraulic Erosion on Heightfields": the standard writeup of droplet erosion, widely reimplemented.

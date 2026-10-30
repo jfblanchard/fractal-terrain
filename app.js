@@ -1,10 +1,10 @@
-// fractal-terrain — procedural heightfield generator, v1
+// fractal-terrain: procedural heightfield generator, v1
 // Two classic generators: fractal value noise (fBm / ridged, the Terragen lineage)
 // and diamond-square midpoint displacement (the recursive-subdivision approach).
 // Self-contained: vendored three.js module, no OrbitControls addon (custom orbit below).
 import * as THREE from './vendor/three/three.module.min.js';
 
-const SEGS = 256;               // 257x257 vertices — matches diamond-square's 2^n+1
+const SEGS = 256;               // 257x257 vertices: matches diamond-square's 2^n+1
 const SIZE = 100;               // world units per side
 const WATER = 0x1a4a66;
 
@@ -43,7 +43,7 @@ function fbm(u, v, octaves, seed, mode) {
   return sum / norm;   // roughly [0,1] for ridged, [-1,1] for fbm
 }
 
-// diamond-square on a (2^n+1) grid — the classic recursive midpoint displacement
+// diamond-square on a (2^n+1) grid: the classic recursive midpoint displacement
 function diamondSquare(n, seed) {
   const size = Math.pow(2, n) + 1;
   const g = new Float32Array(size * size);
@@ -280,7 +280,7 @@ on('export', 'click', () => {
   a.click();
 });
 
-// ---------- orbit controls (drag / wheel / pinch — no addon needed) ----------
+// ---------- orbit controls (drag / wheel / pinch: no addon needed) ----------
 
 const orbit = { theta: -0.7, phi: 0.95, r: 120 };
 const target = new THREE.Vector3(0, 6, 0);

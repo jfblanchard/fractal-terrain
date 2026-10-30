@@ -25,11 +25,11 @@ python3 -m http.server 8732
 Then open **http://localhost:8732/** . Any static server works.
 
 Shareable links carry the scene state in the URL, e.g.
-`?algo=ridged&seed=42&land=0` — `ui=0` hides the overlays for embeds.
+`?algo=ridged&seed=42&land=0`: `ui=0` hides the overlays for embeds.
 
 ## Deploy
 
-It's a static site — any static host works (GitHub Pages, Netlify, a
+It's a static site: any static host works (GitHub Pages, Netlify, a
 local `python3 -m http.server`, plain nginx). No build step.
 
 On Cloudflare Pages: Workers & Pages → Create → Pages → Connect to Git →
@@ -40,28 +40,28 @@ Direct upload also works:
 
 ## Generators (algorithm dropdown)
 
-- **diamond-square** — midpoint displacement on a 2⁸+1 = 257×257 grid:
+- **diamond-square**: midpoint displacement on a 2⁸+1 = 257×257 grid:
   recursively set each midpoint to the average of its neighbors plus a
   shrinking random offset. This is the recursive-subdivision algorithm.
-- **fractal (fBm)** — value noise summed over octaves with halving
+- **fractal (fBm)**: value noise summed over octaves with halving
   amplitude and doubling frequency, plus a radial island falloff so the
   terrain rises out of the sea. This is the classic Terragen-style fractal
   landscape.
-- **ridged** — the same octaves folded into `1-|n|²` sharp crests
+- **ridged**: the same octaves folded into `1-|n|²` sharp crests
   (Musgrave-style ridged multifractal). Makes mountain spines instead of
   rolling hills.
 
 ## Controls
 
-- **seed / ↻** — reproducible terrains; ↻ rolls a random one.
-- **height** — vertical exaggeration.
-- **detail** — fBm octave count (ignored by diamond-square).
-- **sea** — water plane level.
-- **land** — island mask strength: 100 gives an island, 0 gives open
+- **seed / ↻**: reproducible terrains; ↻ rolls a random one.
+- **height**: vertical exaggeration.
+- **detail**: fBm octave count (ignored by diamond-square).
+- **sea**: water plane level.
+- **land**: island mask strength: 100 gives an island, 0 gives open
   mountain terrain (no effect on diamond-square).
-- **grid** — wireframe overlay, on by default.
-- **colors** — height-band vertex colors: sand → grass → rock → snow.
-- **export heightmap** — downloads the current heightfield as a 257×257
+- **grid**: wireframe overlay, on by default.
+- **colors**: height-band vertex colors: sand → grass → rock → snow.
+- **export heightmap**: downloads the current heightfield as a 257×257
   grayscale PNG (white = peak, black = sea floor).
 - **drag** orbits, **scroll/pinch** zooms.
 
@@ -83,16 +83,16 @@ Direct upload also works:
 
 ## History notes (the old programs)
 
-- **Terragen** (Planetside, 1999–) — fractal terrain + photoreal sky/water;
+- **Terragen** (Planetside, 1999–): fractal terrain + photoreal sky/water;
   the reference point for "procedural landscape as art". Heightfield import,
   fractal noise, atmosphere.
-- **Bryce** (1994, MetaCreations) — fractal terrain editor + primitives;
+- **Bryce** (1994, MetaCreations): fractal terrain editor + primitives;
   famous for its weird UI and cheap "landscape in a box" renders.
-- **VistaPro** (1989/1993) — fractal fly-through landscapes from USGS DEMs;
+- **VistaPro** (1989/1993): fractal fly-through landscapes from USGS DEMs;
   granddaddy of the genre.
-- **World Machine** (2005–) — node-graph terrain; added the erosion
+- **World Machine** (2005–): node-graph terrain; added the erosion
   simulation that made heightfields look geologically real.
-- **Mojoworld** (2001–) — Pandromeda's planet-scale procedural worlds.
+- **Mojoworld** (2001–): Pandromeda's planet-scale procedural worlds.
 
 ## License
 
