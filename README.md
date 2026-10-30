@@ -29,11 +29,13 @@ Shareable links carry the scene state in the URL, e.g.
 
 ## Deploy
 
-No build step needed. On Cloudflare Pages: Workers & Pages → Create →
-Pages → Connect to Git → pick this repo → **no build command, output
-directory `/`** → deploy. Works with a private repo; the site is still
-public. Direct upload also works:
-`npx wrangler@3 pages deploy . --project-name fractal-terrain`
+It's a static site — any static host works (GitHub Pages, Netlify, a
+local `python3 -m http.server`, plain nginx). No build step.
+
+On Cloudflare Pages: Workers & Pages → Create → Pages → Connect to Git →
+pick your fork → **no build command, output directory `/`** → deploy.
+Direct upload also works:
+`npx wrangler@3 pages deploy . --project-name your-project-name`
 (wrangler 4 creates a Worker instead of a Pages project).
 
 ## Generators (algorithm dropdown)
